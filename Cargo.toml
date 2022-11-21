@@ -1,0 +1,22 @@
+[package]
+name = "pexe"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tar = "0.4.38"
+rmp-serde = "1.1.1"
+toml = "0.5"
+base91 = "0.1.0"
+lz4_flex = "0.9.3"
+bson = "2.4.0"
+serde = "1.0.147"
+buffer = "0.1.9"
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
