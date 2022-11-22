@@ -1,11 +1,8 @@
-use std:: {
-    env,
-    fs::metadata
-};
+use std::{env, fs::metadata};
 
 mod build;
-mod run;
 mod format_spec;
+mod run;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -20,5 +17,4 @@ fn main() {
     } else if target_metadata.is_symlink() {
         unimplemented!();
     }
-    
 }

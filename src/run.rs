@@ -1,6 +1,6 @@
-use std::{fs, io, path::Path};
 use base91::slice_decode;
 use lz4_flex::decompress_size_prepended;
+use std::{fs, io, path::Path};
 use tar::Archive;
 
 use crate::format_spec::{PexeConfig, PexeFileFormat};
@@ -16,6 +16,7 @@ pub fn run(file: &String) {
     let tarball_uncompressed = decompress_size_prepended(&tarball_decode91).unwrap();
 
     let mut tarball = Archive::new(io::Cursor::new(tarball_uncompressed));
-    tarball.unpack(Path::new(file).parent().unwrap().join("unpack")).unwrap();
-    
+    tarball
+        .unpack(Path::new(file).parent().unwrap().join("unpack"))
+        .unwrap();
 }

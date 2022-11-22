@@ -1,21 +1,24 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug)]
-#[derive(Serialize, Deserialize)]
+pub const PEXE_VERSION: &str = "0.1.0";
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PexeFileFormat {
+    pub pexe_version: String,
+
     pub name: String,
     pub python_version: String,
-    pub tarball: String
+    pub tarball: String,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PexeConfig {
     pub project: Project,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Project {
     pub name: String,
     pub python_version: String,
-    pub include: Vec<String>
+    pub includes: Option<Vec<String>>,
 }
